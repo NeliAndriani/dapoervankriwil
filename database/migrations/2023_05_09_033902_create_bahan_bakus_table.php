@@ -1,0 +1,37 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateBahanBakusTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('bahan_bakus', function (Blueprint $table) {
+            $table->char('bahan_baku_id', 7)->primary();
+            $table->string('nama_bahan_baku', 30);
+            $table->decimal('harga', 8, 2);
+            $table->unsignedInteger('stok');
+            $table->string('satuan', 5);
+            $table->string('deskripsi', 100)->nullable();
+            $table->string('gambar', 50)->nullable();
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('bahan_bakus');
+    }
+}
